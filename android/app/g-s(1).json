@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "912633627556",
+    "firebase_url": "https://who-is-matthew-speller.firebaseio.com",
+    "project_id": "who-is-matthew-speller",
+    "storage_bucket": "who-is-matthew-speller.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912633627556:android:70ba1c264b006e1d6fb731",
+        "android_client_info": {
+          "package_name": "com.LocalCardsNative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912633627556-ifhgiia315dk9maobcsk92smrdhrjtgn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.LocalCardsNative",
+            "certificate_hash": "a5735173b69a8089729d1d9e7c3eded52783f54f"
+          }
+        },
+        {
+          "client_id": "912633627556-fub6b4h0qronv69efll6lrg7g0hvkbst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfgx258QTLeVEMH_ys8DQr0nGYzEDPh9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912633627556-fub6b4h0qronv69efll6lrg7g0hvkbst.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "912633627556-7n0sjfimsapdo3c2nppqeshcggo9crp2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.localcardsnative"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912633627556:android:da3bc66a63b3f2af6fb731",
+        "android_client_info": {
+          "package_name": "com.localcardsnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912633627556-l8sml92tnck0etshkdkigr2ashd63jsa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.localcardsnative",
+            "certificate_hash": "a5735173b69a8089729d1d9e7c3eded52783f54f"
+          }
+        },
+        {
+          "client_id": "912633627556-fub6b4h0qronv69efll6lrg7g0hvkbst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfgx258QTLeVEMH_ys8DQr0nGYzEDPh9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912633627556-fub6b4h0qronv69efll6lrg7g0hvkbst.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "912633627556-7n0sjfimsapdo3c2nppqeshcggo9crp2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.localcardsnative"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

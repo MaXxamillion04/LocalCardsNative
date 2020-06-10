@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>912633627556-7n0sjfimsapdo3c2nppqeshcggo9crp2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.912633627556-7n0sjfimsapdo3c2nppqeshcggo9crp2</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>912633627556-ifhgiia315dk9maobcsk92smrdhrjtgn.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCa6Zh2qX6hfQqqSQaPOUdWi-5MmbOAFVc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>912633627556</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.localcardsnative</string>
+	<key>PROJECT_ID</key>
+	<string>who-is-matthew-speller</string>
+	<key>STORAGE_BUCKET</key>
+	<string>who-is-matthew-speller.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:912633627556:ios:9c1477a7636e6f0a6fb731</string>
+	<key>DATABASE_URL</key>
+	<string>https://who-is-matthew-speller.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,4 +1,4 @@
-package com.localcardsnative;
+package com.localcardsnative.dev;
 
 import com.facebook.react.ReactActivity;
 

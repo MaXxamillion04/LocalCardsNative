@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,6 +14,7 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
 } from 'react-native';
 
 import {
@@ -23,11 +24,103 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import 'react-native-gesture-handler';
 
-const App: () => React$Node = () => {
+import {NavigationContainer} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import AppNavigation from './AppNavigation';
+import Auth from './Auth';
+import auth from '@react-native-firebase/auth';
+import LoadingScreen from './src/screens/LoadingScreen'
+
+
+function App () {
+  const [isLoading, setIsLoading] = useState(true);
+  //const userToken = false;
+  const [userToken, setUser] = useState();
+
+  function onAuthStateChanged(user) {
+    setUser(user);
+    setTimeout(()=>{
+      setIsLoading(false);
+    },500);
+    
+  //  if (initializing) setInitializing(false);
+  }
+  
+  
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  if(isLoading){
+    return (
+      <LoadingScreen />
+    );
+  }else
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
+    <NavigationContainer>
+      {userToken ? <AppNavigation /> : <Auth />}
+    </NavigationContainer>
+  );
+};
+
+const styles = StyleSheet.create({
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+  blackAndWhite: {
+    backgroundColor: 'gray',
+  },
+  black: {
+    backgroundColor: 'silver',
+  },
+  floatingNavBar: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+  },
+
+});
+
+export default App;
+
+
+/*
+<View style={{flex:1}}>
+    
+      <View style={styles.content}>
+        <Text>Hello G World!</Text>
+        <Greeting name="Jojoba-milk-towel" colorSwitch={gray}/>
+        <Greeting name="WEEKEKEEKE" colorSwitch={gray}/>
+        <Greeting name="Valerie" colorSwitch={gray}/>
+        <Button
+          onPress={() => setGray(!gray)}
+          title="Old film?"
+          />
+          <View style={styles.halfTop}>
+            
+          </View>
+          <View style={styles.halfBottom}>
+            <View style={styles.halfWide}>
+
+            </View>
+            <View style={styles.halfWideAgain}>
+
+            </View>
+          </View>
+      </View>
+    <NavBar style={styles.floatingNavBar}/>
+    </View>
+*/
+
+/*
+<StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
@@ -68,47 +161,4 @@ const App: () => React$Node = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
-    </>
-  );
-};
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
-
-export default App;
+      */

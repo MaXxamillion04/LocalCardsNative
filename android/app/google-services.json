@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "974634530742",
+    "firebase_url": "https://localcards-dev.firebaseio.com",
+    "project_id": "localcards-dev",
+    "storage_bucket": "localcards-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974634530742:android:61df24fafaf79c23807317",
+        "android_client_info": {
+          "package_name": "com.localcardsnative.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974634530742-b7m9acio8dgb6396ll84qe1ajvinuhhk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.localcardsnative.dev",
+            "certificate_hash": "a5735173b69a8089729d1d9e7c3eded52783f54f"
+          }
+        },
+        {
+          "client_id": "974634530742-14ftpdn2u8sgkcrhdhdk8bq1vea05jl4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVB3vkTbjiMbMSWoaIDzBwQQcHGYdRybw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974634530742-14ftpdn2u8sgkcrhdhdk8bq1vea05jl4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
