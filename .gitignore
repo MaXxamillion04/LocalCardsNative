@@ -13,6 +13,7 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+**/GoogleService-Info.plist
 xcuserdata
 *.xccheckout
 *.moved-aside
@@ -28,6 +29,7 @@ build/
 .gradle
 local.properties
 *.iml
+android/app/google-services.json
 
 # node.js
 #

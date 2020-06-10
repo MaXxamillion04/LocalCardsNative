@@ -1,0 +1,103 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+	match/mail/{email}{
+  	allow read, write: if true;
+  }
+  
+  	match/games/{game}{    
+      allow read: if (isHost() && request.auth.uid == resource.data.hostId)||(resource.data.access == "Public")||(resource.data.access == "Private" && request.auth.uid in resource.data.allowedPlayers)
+      allow update: if (isHost() && request.auth.uid == resource.data.hostId) || (resource.data.access == "Private" && request.auth.uid in resource.data.allowedPlayers);
+      allow delete: if (isHost() && request.auth.uid == resource.data.hostId);
+      allow create: if isHost() && request.auth.uid == request.resource.data.hostId; 
+    }
+
+		match/waitlist/{wait}{
+        allow read: if request.auth.uid == resource.data.hostId || (resource.data.playerlist[request.auth.uid] == true);
+        allow update: if request.auth.uid == resource.data.hostId || (resource.data.playerlist[request.auth.uid] == true);
+      	allow delete: if (isHost() && request.auth.uid == resource.data.hostId);
+      	allow create: if isHost() && request.auth.uid == request.resource.data.hostId; 
+    }
+
+		match/currentPlayers/{listId}{
+        allow read: if request.auth.uid == resource.data.hostId || (resource.data.playerlist[request.auth.uid] == true);
+        allow update: if request.auth.uid == resource.data.hostId || (resource.data.playerlist[request.auth.uid] == true);
+      	allow delete: if (isHost() && request.auth.uid == resource.data.hostId);
+      	allow create: if isHost() && request.auth.uid == request.resource.data.hostId; 
+    }
+
+    match /users/{userId}{
+    	allow read: if isSignedIn();
+    	allow write: if isOwner(userId)
+    	match/{documents}/{document=**}{
+        allow read: if isSignedIn();
+        allow write: if isOwner(userId)
+      }
+    }
+    
+    match /hosts/{hostId}{
+      allow read, write: if isOwner(hostId)
+      match/{documents}/{document=**}{
+	      allow read, write: if isOwner(hostId)
+      }
+    }
+    
+    match/messages/{message}{
+    	allow read: if request.auth.uid == resource.data.senderId || request.auth.uid == resource.data.receiverId;
+    	allow update: if request.auth.uid == request.resource.data.senderId || request.auth.uid == request.resource.data.receiverId;
+    	allow create: if request.auth.uid == request.resource.data.senderId || request.resource.data.senderId == "System"
+    }
+    
+    match/notifications/{notification}{
+    	allow read: if request.auth.uid == resource.data.receiverId;
+      allow delete: if request.auth.uid == resource.data.receiverId;
+      allow create: if request.auth.uid == request.resource.data.senderId;
+    }    
+    
+    match/requests/{req}{
+      allow read: if true;
+    	// allow read: if request.auth.uid == resource.data.senderId || request.auth.uid == resource.data.receiverId;
+      
+    	allow update: if request.auth.uid == request.resource.data.senderId || request.auth.uid == request.resource.data.receiverId;
+    	allow create: if request.auth.uid == request.resource.data.senderId || request.resource.data.senderId == "System"
+    	allow delete: if request.auth.uid == resource.data.senderId || request.auth.uid == resource.data.receiverId;
+    }
+    
+    // Functions
+    function isSignedIn(){
+    	return request.auth != null;
+    }
+    
+    function getHash(val){
+     	return hashing.sha256(val);
+    }
+    
+    function isOwner(userId){
+    	return request.auth.uid == userId;
+    }
+    
+    function isHost(){
+    	return request.auth.token.isHost;
+    }
+    
+    function emailVerified(){
+    	return request.auth.token.email_verified;
+    }
+    
+    function existingData(){
+    	return resource.data;
+    }
+    
+    function incomingData(){
+    	return request.resource.data;
+    }
+    
+    function getUserData(){
+    	return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+    
+  }
+  
+  
+}
