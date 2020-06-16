@@ -17,6 +17,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {OutlinedTextField} from 'react-native-material-textfield';
 import functions from '@react-native-firebase/functions';
+import auth from '@react-native-firebase/auth';
+
 
 export function NewUserScreen({ navigation }) {
     const [values, setValues] = useState({
@@ -41,27 +43,36 @@ export function NewUserScreen({ navigation }) {
         if (valid) {
           console.log("we're in");
           
-          let user = await functions().httpsCallable("createUser");
-          user({
-            email: values.email,
-            password: values.password,
-            displayName: values.name,
-          })
-            .then(user => {
+          //await functions().httpsCallable("createUser");
+          auth().createUserWithEmailAndPassword(            
+            values.email, values.password, values.name
+            )
+          
+            .then((user)=> {
               console.log(user);
+              
               setValues({
                 ...values,
                 successMessage: 'Successfully Created Account! Please sign in',
               });
+              setTimeout(() => {
               navigation.push("Login");
+            }, 1000);
             })
-            .catch(error => {
+            .catch( error => {
               if (error.code === 'auth/invalid-email') {
                 setValues({
                   ...values,
-                  emailError: 'There is no account at this email address',
+                  emailError: 'Email Invalid'
                 });
                 console.log('No account with this address!');
+              }else if(error.code === 'auth/email-already-in-use'){
+                setValues({
+                  ...values,
+                  emailError: 'There is already an account with this email address!',
+                });
+                
+
               }else{
               //alert(error);
               console.log(error);
@@ -82,7 +93,7 @@ export function NewUserScreen({ navigation }) {
         var passwordErr=values.passwordError;
     
 
-        if(name.length < 3){
+        if(values.name.length < 3){
           nameErr="Name must be 3 characters long or more";
           ret = false;
         }else{

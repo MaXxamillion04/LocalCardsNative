@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "localcards-dev"
+    "default": "localcards-dev",
+    "devServer": "localcards-dev"
   }
 }
